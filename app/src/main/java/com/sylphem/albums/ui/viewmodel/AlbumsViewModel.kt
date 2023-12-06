@@ -14,4 +14,12 @@ import javax.inject.Inject
 class AlbumsViewModel @Inject constructor(
     private val repository: AlbumsRepository
 ) : ViewModel() {
+
+    init{
+        viewModelScope.launch {
+            val albums = withContext(Dispatchers.IO) { repository.getAlbumsList() }
+            Log.d("Albums", albums.toString())
+        }
+    }
+
 }
