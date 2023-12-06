@@ -7,10 +7,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.sylphem.albums.ui.theme.AlbumsTheme
+import com.sylphem.albums.ui.viewmodel.AlbumsViewModel
 
 @Composable
-fun AlbumsScreen(modifier: Modifier = Modifier) {
+fun AlbumsScreen(
+    modifier: Modifier = Modifier,
+    viewModel: AlbumsViewModel = hiltViewModel()
+) {
     Surface(
         modifier = modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
