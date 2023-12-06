@@ -1,4 +1,4 @@
-package com.sylphem.albums
+package com.sylphem.albums.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
