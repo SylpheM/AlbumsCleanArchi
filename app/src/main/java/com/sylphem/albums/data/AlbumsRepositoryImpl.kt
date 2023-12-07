@@ -10,13 +10,8 @@ class AlbumsRepositoryImpl @Inject constructor(
     private val albumsApiService: AlbumsApiService
 ) : AlbumsRepository {
     override suspend fun getAlbumsList(): List<AlbumItem> =
-        try {
-            albumsApiService.getAlbumsList().map {
-                it.convert()
-            }
-        } catch (exception: Exception) {
-            exception.printStackTrace()
-            emptyList()
+        albumsApiService.getAlbumsList().map {
+            it.convert()
         }
 }
 

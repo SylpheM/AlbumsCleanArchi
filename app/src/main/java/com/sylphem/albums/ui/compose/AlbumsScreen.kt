@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.sylphem.albums.ui.theme.AlbumsTheme
 import com.sylphem.albums.ui.viewmodel.AlbumsViewModel
 
@@ -16,11 +17,13 @@ fun AlbumsScreen(
     modifier: Modifier = Modifier,
     viewModel: AlbumsViewModel = hiltViewModel()
 ) {
+    val uiState: AlbumsViewModel.AlbumsUiState =
+        viewModel.uiState.collectAsStateWithLifecycle().value
     Surface(
         modifier = modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
-        Greeting("Android")
+        Greeting(uiState.toString())
     }
 }
 
