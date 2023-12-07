@@ -15,6 +15,6 @@ fun MainNavigation() {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = AlbumsList.route) {
-        composable(AlbumsList.route) { AlbumsScreen(modifier = Modifier.padding(16.dp)) }
+        composable(AlbumsList.route) { AlbumsScreen() }
     }
 }

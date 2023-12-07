@@ -1,6 +1,7 @@
 package com.sylphem.albums.ui.compose
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -14,6 +15,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.painter.ColorPainter
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -36,7 +41,7 @@ fun AlbumsScreen(
 }
 
 @Composable
-fun AlbumsScreen(uiState: AlbumsUiState, modifier: Modifier = Modifier) {
+fun AlbumsScreen(uiState: AlbumsUiState) {
     when (uiState) {
         AlbumsUiState.Loading -> LoadingCircle()
 
@@ -51,7 +56,7 @@ fun LoadingCircle() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(46.dp)
+            .padding(32.dp)
     ) {
         CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
     }
@@ -84,14 +89,26 @@ fun AlbumsList(albums: List<AlbumItem>) {
 
 @Composable
 fun ErrorText(localizedMessage: String?) {
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(46.dp)
+            .padding(32.dp)
     ) {
+        Image(
+            painter = painterResource(id = android.R.drawable.stat_notify_error),
+            contentDescription = null,
+            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.error)
+        )
+
         Text(
             style = MaterialTheme.typography.labelLarge,
-            text = localizedMessage ?: ""
+            text = stringResource(id = R.string.error_message)
+        )
+
+        Text(
+            style = MaterialTheme.typography.labelSmall,
+            text = stringResource(id = R.string.error_detail, localizedMessage ?: ""),
+            modifier = Modifier.padding(vertical = 8.dp)
         )
     }
 }
@@ -135,6 +152,6 @@ fun AlbumsScreenWithDataPreview() {
 @Composable
 fun AlbumsScreenErrorPreview() {
     AlbumsTheme {
-        AlbumsScreen(uiState = AlbumsUiState.Error(Exception("Error")))
+        AlbumsScreen(uiState = AlbumsUiState.Error(Exception("No internet")))
     }
 }
