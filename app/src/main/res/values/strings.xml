@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Albums</string>
+    <string name="thumbnail">Thumbnail</string>
     <string name="error_message">Sorry, we could not get the albums list.\nPlease check your internet connection and try again.</string>
     <string name="error_detail">(Error: %s)</string>
+    <string name="album_detail">ID: %d, Album ID: %d</string>
 </resources>
