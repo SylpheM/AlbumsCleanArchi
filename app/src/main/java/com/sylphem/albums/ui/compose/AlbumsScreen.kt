@@ -42,7 +42,8 @@ fun AlbumsScreen(
 ) {
     val uiState: AlbumsUiState = viewModel.uiState.collectAsStateWithLifecycle().value
     Surface(
-        modifier = modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
+        modifier = modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
     ) {
         AlbumsScreen(uiState)
     }
@@ -66,7 +67,10 @@ fun LoadingCircle() {
             .fillMaxWidth()
             .padding(32.dp)
     ) {
-        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+        CircularProgressIndicator(
+            modifier = Modifier.align(Alignment.Center),
+            color = MaterialTheme.colorScheme.primary
+        )
     }
 }
 
@@ -76,14 +80,14 @@ fun AlbumCell(album: AlbumItem) {
         AsyncImage(
             model = album.thumbnailUrl,
             contentDescription = stringResource(R.string.thumbnail),
+            modifier = Modifier.size(56.dp),
             placeholder = ColorPainter(MaterialTheme.colorScheme.secondaryContainer),
-            error = ColorPainter(MaterialTheme.colorScheme.secondaryContainer),
-            modifier = Modifier.size(56.dp)
+            error = ColorPainter(MaterialTheme.colorScheme.secondaryContainer)
         )
         Text(
+            text = album.title,
             modifier = Modifier.padding(8.dp),
-            style = MaterialTheme.typography.labelMedium,
-            text = album.title
+            style = MaterialTheme.typography.labelMedium
         )
     }
 }
@@ -130,14 +134,14 @@ fun ErrorText(localizedMessage: String?) {
         )
 
         Text(
-            style = MaterialTheme.typography.labelLarge,
-            text = stringResource(id = R.string.error_message)
+            text = stringResource(id = R.string.error_message),
+            style = MaterialTheme.typography.labelLarge
         )
 
         Text(
-            style = MaterialTheme.typography.labelSmall,
             text = stringResource(id = R.string.error_detail, localizedMessage ?: ""),
-            modifier = Modifier.padding(vertical = 8.dp)
+            modifier = Modifier.padding(vertical = 8.dp),
+            style = MaterialTheme.typography.labelSmall
         )
     }
 }
