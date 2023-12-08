@@ -1,4 +1,4 @@
-package com.sylphem.albums.network.remote
+package com.sylphem.core.network.util
 
 import okhttp3.Interceptor
 import okhttp3.Response

@@ -17,4 +17,5 @@ rootProject.name = "Albums"
 include(":app")
 include(":core-domain")
 include(":core-ui")
+include(":core-network")
 include(":albums-network")

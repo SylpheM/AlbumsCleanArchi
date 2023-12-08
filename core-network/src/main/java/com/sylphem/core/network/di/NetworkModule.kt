@@ -1,12 +1,9 @@
-package com.sylphem.albums.network.di
+package com.sylphem.core.network.di
 
 import android.content.Context
 import coil.ImageLoader
 import coil.disk.DiskCache
-import com.sylphem.albums.network.AlbumsRepositoryImpl
-import com.sylphem.albums.network.remote.AlbumsApiService
-import com.sylphem.albums.network.remote.RequestHeaderInterceptor
-import com.sylphem.core.domain.repository.AlbumsRepository
+import com.sylphem.core.network.util.RequestHeaderInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,18 +15,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
-
-    @Singleton
-    @Provides
-    fun provideAlbumsApiService(): AlbumsApiService {
-        return AlbumsApiService.create()
-    }
-
-    @Provides
-    @Singleton
-    fun provideAlbumsRepository(albumsApiService: AlbumsApiService): AlbumsRepository {
-        return AlbumsRepositoryImpl(albumsApiService)
-    }
 
     @Provides
     @Singleton

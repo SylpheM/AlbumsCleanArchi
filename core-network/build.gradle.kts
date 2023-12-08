@@ -12,7 +12,7 @@ android {
     defaultConfig {
         minSdk = 24
     }
-    namespace = "com.sylphem.albums.network"
+    namespace = "com.sylphem.core.network"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -30,9 +30,8 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.kotlinx.serialization.converter)
+    implementation(libs.coil.kt.compose)
 
     testImplementation(libs.junit)
+    testImplementation(libs.retrofit.mockserver)
 }

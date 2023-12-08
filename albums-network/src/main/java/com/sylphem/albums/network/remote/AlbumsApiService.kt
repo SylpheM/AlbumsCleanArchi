@@ -3,7 +3,7 @@ package com.sylphem.albums.network.remote
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.sylphem.albums.network.model.RemoteAlbumItem
 import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.http.GET
@@ -20,7 +20,7 @@ interface AlbumsApiService {
             val client = OkHttpClient.Builder()
                 .build()
 
-            val contentType = "application/json".toMediaType()
+            val contentType = MediaType.get("application/json")
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(client)
