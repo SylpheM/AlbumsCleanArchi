@@ -1,6 +1,5 @@
 package com.sylphem.albums.di
 
-import com.sylphem.albums.data.local.database.DatabaseAlbumsDataSourceImpl
 import com.sylphem.core.domain.repository.DatabaseAlbumsDataSource
 import com.sylphem.core.domain.repository.NetworkAlbumsDataSource
 import com.sylphem.core.domain.usecase.GetAlbumsUseCase
@@ -22,8 +21,4 @@ class AlbumsModule {
     ): GetAlbumsUseCase {
         return GetAlbumsUseCase(networkAlbumsDataSource, databaseAlbumsDataSource)
     }
-
-    @Singleton
-    @Provides
-    fun providesDatabaseAlbumsDataSource(): DatabaseAlbumsDataSource = DatabaseAlbumsDataSourceImpl()
 }
