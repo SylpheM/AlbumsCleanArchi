@@ -1,4 +1,4 @@
-package com.sylphem.albums.domain.model
+package com.sylphem.core.domain.model
 
 data class AlbumItem(
     val id: Long,

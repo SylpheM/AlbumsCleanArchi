@@ -1,8 +1,8 @@
-package com.sylphem.albums.di;
+package com.sylphem.albums.di
 
 import com.sylphem.albums.data.AlbumsRepositoryImpl
 import com.sylphem.albums.data.remote.AlbumsApiService
-import com.sylphem.albums.domain.repository.AlbumsRepository
+import com.sylphem.core.domain.repository.AlbumsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

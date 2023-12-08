@@ -31,10 +31,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.sylphem.albums.R
-import com.sylphem.albums.domain.model.AlbumItem
 import com.sylphem.albums.ui.theme.AlbumsTheme
 import com.sylphem.albums.ui.viewmodel.AlbumsViewModel
 import com.sylphem.albums.ui.viewmodel.AlbumsViewModel.AlbumsUiState
+import com.sylphem.core.domain.model.AlbumItem
 
 @Composable
 fun AlbumsScreen(

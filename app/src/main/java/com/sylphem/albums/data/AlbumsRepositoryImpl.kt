@@ -2,8 +2,8 @@ package com.sylphem.albums.data
 
 import com.sylphem.albums.data.model.RemoteAlbumItem
 import com.sylphem.albums.data.remote.AlbumsApiService
-import com.sylphem.albums.domain.model.AlbumItem
-import com.sylphem.albums.domain.repository.AlbumsRepository
+import com.sylphem.core.domain.model.AlbumItem
+import com.sylphem.core.domain.repository.AlbumsRepository
 import javax.inject.Inject
 
 class AlbumsRepositoryImpl @Inject constructor(

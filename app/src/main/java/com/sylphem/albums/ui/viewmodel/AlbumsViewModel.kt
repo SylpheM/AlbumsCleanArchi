@@ -2,8 +2,8 @@ package com.sylphem.albums.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sylphem.albums.domain.model.AlbumItem
-import com.sylphem.albums.domain.repository.AlbumsRepository
+import com.sylphem.core.domain.model.AlbumItem
+import com.sylphem.core.domain.repository.AlbumsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
