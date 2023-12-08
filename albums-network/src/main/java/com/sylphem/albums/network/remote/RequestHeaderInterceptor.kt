@@ -1,4 +1,4 @@
-package com.sylphem.albums.data.remote
+package com.sylphem.albums.network.remote
 
 import okhttp3.Interceptor
 import okhttp3.Response

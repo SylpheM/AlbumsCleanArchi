@@ -1,7 +1,7 @@
-package com.sylphem.albums.data.remote
+package com.sylphem.albums.network.remote
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.sylphem.albums.data.model.RemoteAlbumItem
+import com.sylphem.albums.network.model.RemoteAlbumItem
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient

@@ -1,7 +1,7 @@
-package com.sylphem.albums.data
+package com.sylphem.albums.network
 
-import com.sylphem.albums.data.model.RemoteAlbumItem
-import com.sylphem.albums.data.remote.AlbumsApiService
+import com.sylphem.albums.network.model.RemoteAlbumItem
+import com.sylphem.albums.network.remote.AlbumsApiService
 import com.sylphem.core.domain.model.AlbumItem
 import com.sylphem.core.domain.repository.AlbumsRepository
 import javax.inject.Inject

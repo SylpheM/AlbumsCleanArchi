@@ -56,6 +56,7 @@ dependencies {
 
     implementation(project(":core-domain"))
     implementation(project(":core-ui"))
+    implementation(project(":albums-network"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
@@ -68,10 +69,6 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.coil.kt.compose)
-
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.kotlinx.serialization.converter)
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

@@ -1,4 +1,4 @@
-package com.sylphem.albums.data.model
+package com.sylphem.albums.network.model
 
 import kotlinx.serialization.Serializable
 
