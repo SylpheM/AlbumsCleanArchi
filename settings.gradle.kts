@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "Albums"
 include(":app")
 include(":core-domain")
+include(":core-ui")

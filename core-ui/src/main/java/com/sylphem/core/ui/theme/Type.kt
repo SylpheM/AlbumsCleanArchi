@@ -1,4 +1,4 @@
-package com.sylphem.albums.ui.theme
+package com.sylphem.core.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
