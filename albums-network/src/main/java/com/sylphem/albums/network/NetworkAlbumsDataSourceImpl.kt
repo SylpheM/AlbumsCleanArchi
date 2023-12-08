@@ -3,12 +3,12 @@ package com.sylphem.albums.network
 import com.sylphem.albums.network.model.RemoteAlbumItem
 import com.sylphem.albums.network.remote.AlbumsApiService
 import com.sylphem.core.domain.model.AlbumItem
-import com.sylphem.core.domain.repository.AlbumsRepository
+import com.sylphem.core.domain.repository.NetworkAlbumsDataSource
 import javax.inject.Inject
 
-class AlbumsRepositoryImpl @Inject constructor(
+class NetworkAlbumsDataSourceImpl @Inject constructor(
     private val albumsApiService: AlbumsApiService
-) : AlbumsRepository {
+) : NetworkAlbumsDataSource {
     override suspend fun getAlbumsList(): List<AlbumItem> =
         albumsApiService.getAlbumsList().map {
             it.convert()

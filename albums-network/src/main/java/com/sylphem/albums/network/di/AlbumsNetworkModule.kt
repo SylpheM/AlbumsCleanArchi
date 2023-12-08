@@ -1,8 +1,8 @@
 package com.sylphem.albums.network.di
 
-import com.sylphem.albums.network.AlbumsRepositoryImpl
+import com.sylphem.albums.network.NetworkAlbumsDataSourceImpl
 import com.sylphem.albums.network.remote.AlbumsApiService
-import com.sylphem.core.domain.repository.AlbumsRepository
+import com.sylphem.core.domain.repository.NetworkAlbumsDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +21,7 @@ class AlbumsNetworkModule {
 
     @Provides
     @Singleton
-    fun provideAlbumsRepository(albumsApiService: AlbumsApiService): AlbumsRepository {
-        return AlbumsRepositoryImpl(albumsApiService)
+    fun provideAlbumsRepository(albumsApiService: AlbumsApiService): NetworkAlbumsDataSource {
+        return NetworkAlbumsDataSourceImpl(albumsApiService)
     }
 }

@@ -3,7 +3,8 @@ package com.sylphem.albums.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sylphem.core.domain.model.AlbumItem
-import com.sylphem.core.domain.repository.AlbumsRepository
+import com.sylphem.core.domain.repository.NetworkAlbumsDataSource
+import com.sylphem.core.domain.usecase.GetAlbumsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
@@ -16,11 +17,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AlbumsViewModel @Inject constructor(
-    private val repository: AlbumsRepository
+    private val getAlbums: GetAlbumsUseCase
 ) : ViewModel() {
 
     val uiState: StateFlow<AlbumsUiState> = flow<AlbumsUiState> {
-        val albums = withContext(Dispatchers.IO) { repository.getAlbumsList() }
+        val albums = withContext(Dispatchers.IO) { getAlbums() }
         emit(AlbumsUiState.Success(albums))
     }
         .catch { emit(AlbumsUiState.Error(it)) }
