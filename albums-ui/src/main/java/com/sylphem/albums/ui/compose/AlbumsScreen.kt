@@ -18,7 +18,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.ColorPainter
@@ -31,10 +31,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.sylphem.albums.ui.R
-import com.sylphem.core.ui.theme.AlbumsTheme
 import com.sylphem.albums.ui.viewmodel.AlbumsViewModel
 import com.sylphem.albums.ui.viewmodel.AlbumsViewModel.AlbumsUiState
 import com.sylphem.core.domain.model.AlbumItem
+import com.sylphem.core.ui.theme.AlbumsTheme
 
 @Composable
 fun AlbumsScreen(
@@ -62,14 +62,21 @@ fun AlbumsScreen(uiState: AlbumsUiState) {
 
 @Composable
 fun LoadingCircle() {
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(32.dp)
     ) {
         CircularProgressIndicator(
-            modifier = Modifier.align(Alignment.Center),
+            modifier = Modifier.align(CenterHorizontally),
             color = MaterialTheme.colorScheme.primary
+        )
+        Text(
+            text = stringResource(id = R.string.loading),
+            modifier = Modifier
+                .padding(8.dp)
+                .align(CenterHorizontally),
+            style = MaterialTheme.typography.labelMedium
         )
     }
 }
