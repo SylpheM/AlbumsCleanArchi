@@ -2,6 +2,7 @@ package com.sylphem.albums.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sylphem.core.CoroutineContextProvider
 import com.sylphem.core.domain.model.AlbumItem
 import com.sylphem.core.domain.usecase.GetAlbumsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,11 +17,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AlbumsViewModel @Inject constructor(
-    private val getAlbums: GetAlbumsUseCase
+    private val getAlbums: GetAlbumsUseCase,
+    private val coroutineContextProvider : CoroutineContextProvider
 ) : ViewModel() {
 
     val uiState: StateFlow<AlbumsUiState> = flow<AlbumsUiState> {
-        val albums = withContext(Dispatchers.IO) { getAlbums() }
+        val albums = withContext(coroutineContextProvider.IO) { getAlbums() }
         emit(AlbumsUiState.Success(albums))
     }
         .catch { emit(AlbumsUiState.Error(it)) }
