@@ -16,7 +16,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.sylphem.albums.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -69,9 +69,10 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
 
     testImplementation(libs.junit)
-    testImplementation(libs.hilt.android.testing)
+    androidTestImplementation(libs.hilt.android.testing)
     kaptTest(libs.hilt.compiler)
     androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.androidx.navigation.testing)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
