@@ -3,6 +3,7 @@ package com.sylphem.albums.data.database.model
 import androidx.room.Dao
 import androidx.room.Entity
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.PrimaryKey
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
@@ -22,6 +23,6 @@ interface LocalAlbumItemDao {
     @Query("SELECT * FROM localalbumitem ORDER BY id")
     fun getAlbums(): Flow<List<LocalAlbumItem>>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAlbums(albums: List<LocalAlbumItem>)
 }
