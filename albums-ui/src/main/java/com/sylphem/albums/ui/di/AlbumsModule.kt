@@ -1,4 +1,4 @@
-package com.sylphem.albums.di
+package com.sylphem.albums.ui.di
 
 import com.sylphem.core.domain.repository.DatabaseAlbumsDataSource
 import com.sylphem.core.domain.repository.NetworkAlbumsDataSource

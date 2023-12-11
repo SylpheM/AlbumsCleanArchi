@@ -3,7 +3,6 @@ package com.sylphem.albums.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sylphem.core.domain.model.AlbumItem
-import com.sylphem.core.domain.repository.NetworkAlbumsDataSource
 import com.sylphem.core.domain.usecase.GetAlbumsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
