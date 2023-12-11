@@ -5,6 +5,7 @@ import com.sylphem.core.domain.repository.DatabaseAlbumsDataSource
 import com.sylphem.core.domain.repository.NetworkAlbumsDataSource
 import com.sylphem.core.domain.usecase.GetAlbumsUseCaseImpl
 import kotlinx.coroutines.test.runTest
+import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.io.IOException
@@ -48,6 +49,17 @@ class GetAlbumsUseCaseImplTest {
 
         //Then
         assertEquals(albums, result)
+    }
+
+    @Test
+    fun invokeDatabaseError() = runTest {
+        //Given
+        val networkDataSource = FakeErrorNetworkAlbumsDataSource()
+        val databaseDataSource = FakeDatabaseAlbumsDataSource()
+        val useCase = GetAlbumsUseCaseImpl(networkDataSource, databaseDataSource)
+
+        //When / Then
+        runCatching { useCase.invoke() }.onFailure { Assert.assertTrue(it is IOException) }
     }
 }
 
