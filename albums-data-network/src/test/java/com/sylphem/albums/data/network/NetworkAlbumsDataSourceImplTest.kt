@@ -69,10 +69,10 @@ class NetworkAlbumsDataSourceImplTest {
             )
         }
     }
+}
 
-    private class FakeErrorAlbumsApiService : AlbumsApiService {
-        override suspend fun getAlbumsList(): List<RemoteAlbumItem> {
-            throw IOException()
-        }
+private class FakeErrorAlbumsApiService : AlbumsApiService {
+    override suspend fun getAlbumsList(): List<RemoteAlbumItem> {
+        throw IOException()
     }
 }

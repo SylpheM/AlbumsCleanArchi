@@ -32,20 +32,8 @@ class DatabaseAlbumsDataSourceImplTest {
         //When
         dataSource.saveAlbumsList(
             listOf(
-                AlbumItem(
-                    id = 1,
-                    albumId = 1,
-                    title = "Album title 1",
-                    url = "",
-                    thumbnailUrl = "https://via.placeholder.com/150/92c952"
-                ),
-                AlbumItem(
-                    id = 1,
-                    albumId = 1,
-                    title = "Album title 2",
-                    url = "",
-                    thumbnailUrl = "https://via.placeholder.com/150/771796"
-                )
+                fakeAlbumItem(1),
+                fakeAlbumItem(2)
             )
         )
 
@@ -58,20 +46,8 @@ class DatabaseAlbumsDataSourceImplTest {
         //Given
         val dataSource = DatabaseAlbumsDataSourceImpl(FakeLocalAlbumItemDao())
         val albums = listOf(
-            AlbumItem(
-                id = 1,
-                albumId = 1,
-                title = "Album title 1",
-                url = "",
-                thumbnailUrl = "https://via.placeholder.com/150/92c952"
-            ),
-            AlbumItem(
-                id = 1,
-                albumId = 1,
-                title = "Album title 2",
-                url = "",
-                thumbnailUrl = "https://via.placeholder.com/150/771796"
-            )
+            fakeAlbumItem(1),
+            fakeAlbumItem(2)
         )
         dataSource.saveAlbumsList(albums)
 
@@ -95,3 +71,11 @@ private class FakeLocalAlbumItemDao : LocalAlbumItemDao {
         data.addAll(albums)
     }
 }
+
+fun fakeAlbumItem(id: Long) = AlbumItem(
+    id = id,
+    albumId = 1,
+    title = "Album title $id",
+    url = "",
+    thumbnailUrl = "https://via.placeholder.com/150/771796"
+)
