@@ -26,6 +26,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.datasource.CollectionPreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -153,45 +155,37 @@ fun ErrorText(localizedMessage: String?) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun AlbumsScreenLoadingPreview() {
-    AlbumsTheme {
-        AlbumsScreen(uiState = AlbumsUiState.Loading)
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun AlbumsScreenWithDataPreview() {
-    AlbumsTheme {
-        AlbumsScreen(
-            uiState = AlbumsUiState.Success(
-                listOf(
-                    AlbumItem(
-                        id = 1,
-                        albumId = 1,
-                        title = "Album title 1",
-                        url = "",
-                        thumbnailUrl = "https://via.placeholder.com/150/92c952"
-                    ),
-                    AlbumItem(
-                        id = 1,
-                        albumId = 1,
-                        title = "Album title 2",
-                        url = "",
-                        thumbnailUrl = "https://via.placeholder.com/150/771796"
-                    )
+class AlbumsUiStateSampleProvider : CollectionPreviewParameterProvider<AlbumsUiState>(
+    listOf(
+        AlbumsUiState.Loading,
+        AlbumsUiState.Success(
+            listOf(
+                AlbumItem(
+                    id = 1,
+                    albumId = 1,
+                    title = "Album title 1",
+                    url = "",
+                    thumbnailUrl = "https://via.placeholder.com/150/92c952"
+                ),
+                AlbumItem(
+                    id = 1,
+                    albumId = 1,
+                    title = "Album title 2",
+                    url = "",
+                    thumbnailUrl = "https://via.placeholder.com/150/771796"
                 )
             )
+        ),
+        AlbumsUiState.Error(
+            Exception("No internet")
         )
-    }
-}
+    )
+)
 
 @Preview(showBackground = true)
 @Composable
-fun AlbumsScreenErrorPreview() {
+fun AlbumsScreenLoadingPreview(@PreviewParameter(AlbumsUiStateSampleProvider::class) uiState: AlbumsUiState) {
     AlbumsTheme {
-        AlbumsScreen(uiState = AlbumsUiState.Error(Exception("No internet")))
+        AlbumsScreen(uiState = uiState)
     }
 }

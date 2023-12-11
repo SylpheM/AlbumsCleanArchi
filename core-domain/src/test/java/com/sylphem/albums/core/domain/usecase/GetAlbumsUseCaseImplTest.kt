@@ -3,20 +3,20 @@ package com.sylphem.albums.core.domain.usecase
 import com.sylphem.core.domain.model.AlbumItem
 import com.sylphem.core.domain.repository.DatabaseAlbumsDataSource
 import com.sylphem.core.domain.repository.NetworkAlbumsDataSource
-import com.sylphem.core.domain.usecase.GetAlbumsUseCase
+import com.sylphem.core.domain.usecase.GetAlbumsUseCaseImpl
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.io.IOException
 
-class GetAlbumsUseCaseTest {
+class GetAlbumsUseCaseImplTest {
 
     @Test
     fun invokeNetworkSuccess() = runTest {
         //Given
         val networkDataSource = FakeNetworkAlbumsDataSource()
         val databaseDataSource = FakeDatabaseAlbumsDataSource()
-        val useCase = GetAlbumsUseCase(networkDataSource, databaseDataSource)
+        val useCase = GetAlbumsUseCaseImpl(networkDataSource, databaseDataSource)
         val albums = listOf(
             fakeAlbumItem(1),
             fakeAlbumItem(2)
@@ -27,8 +27,8 @@ class GetAlbumsUseCaseTest {
         val result = useCase.invoke()
 
         //Then
-        assertEquals(result, albums)
-        assertEquals(result, databaseDataSource.getAlbumsList())
+        assertEquals(albums, result)
+        assertEquals(databaseDataSource.getAlbumsList(), result)
     }
 
     @Test
@@ -36,7 +36,7 @@ class GetAlbumsUseCaseTest {
         //Given
         val networkDataSource = FakeErrorNetworkAlbumsDataSource()
         val databaseDataSource = FakeDatabaseAlbumsDataSource()
-        val useCase = GetAlbumsUseCase(networkDataSource, databaseDataSource)
+        val useCase = GetAlbumsUseCaseImpl(networkDataSource, databaseDataSource)
         val albums = listOf(
             fakeAlbumItem(1),
             fakeAlbumItem(2)
@@ -47,7 +47,7 @@ class GetAlbumsUseCaseTest {
         val result = useCase.invoke()
 
         //Then
-        assertEquals(result, albums)
+        assertEquals(albums, result)
     }
 }
 

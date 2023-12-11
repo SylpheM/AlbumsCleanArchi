@@ -21,7 +21,7 @@ class NetworkAlbumsDataSourceImplTest {
 
         //Then
         assertEquals(
-            result, listOf(
+            listOf(
                 AlbumItem(
                     id = 1,
                     albumId = 1,
@@ -36,7 +36,7 @@ class NetworkAlbumsDataSourceImplTest {
                     url = "",
                     thumbnailUrl = ""
                 )
-            )
+            ), result
         )
     }
 

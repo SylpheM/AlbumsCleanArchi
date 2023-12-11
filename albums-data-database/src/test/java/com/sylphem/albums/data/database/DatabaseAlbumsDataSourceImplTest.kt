@@ -38,7 +38,7 @@ class DatabaseAlbumsDataSourceImplTest {
         )
 
         //Then
-        assertEquals(dataSource.getAlbumsList().size, 2)
+        assertEquals(2, dataSource.getAlbumsList().size)
     }
 
     @Test
@@ -55,7 +55,7 @@ class DatabaseAlbumsDataSourceImplTest {
         val resultAlbums = dataSource.getAlbumsList()
 
         //Then
-        assertEquals(resultAlbums, albums)
+        assertEquals(albums, resultAlbums)
     }
 }
 
