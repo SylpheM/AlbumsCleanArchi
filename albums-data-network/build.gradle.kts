@@ -35,4 +35,5 @@ dependencies {
     implementation(libs.retrofit.kotlinx.serialization.converter)
 
     testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
 }
