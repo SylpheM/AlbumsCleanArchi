@@ -9,11 +9,11 @@ class GetAlbumsUseCase(
     private val databaseAlbumsDataSource: DatabaseAlbumsDataSource
 ) {
     suspend operator fun invoke(): List<AlbumItem> =
-        databaseAlbumsDataSource.getAlbumsList().let {
-            it.ifEmpty {
-                val freshAlbums = networkAlbumsDataSource.getAlbumsList()
-                databaseAlbumsDataSource.saveAlbumsList(freshAlbums)
-                freshAlbums
+        databaseAlbumsDataSource.getAlbumsList().let { albums ->
+            albums.ifEmpty {
+                networkAlbumsDataSource.getAlbumsList().apply {
+                    databaseAlbumsDataSource.saveAlbumsList(this)
+                }
             }
         }
 }
